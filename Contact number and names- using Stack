@@ -1,0 +1,59 @@
+#include <stdio.h>
+#define MAX 100 
+
+int stack[MAX];
+int top = -1;   
+struct contact{
+    char name[20];
+    long num;
+};
+int main() {
+    struct contact a[MAX];
+    int choice, value,i=0;
+
+    while(1){ 
+        printf("\nStack Operations:\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        if (choice == 1) { 
+            if (top == MAX - 1) {
+                printf("Stack Overflow! Cannot push more elements.\n");
+            } else {
+                top++;
+                printf("Enter the name");
+                scanf("%s", a[top].name);
+                printf("ENTER YOUR NUM");
+                scanf("%ld",&a[top].num);
+                
+                printf("contact pushed onto the stack. %s\n%ld\n",a[top].name,a[top].num);
+            }
+        } else if (choice == 2) { 
+            if (top == -1) {
+                printf("Stack Underflow! Cannot pop elements from an empty stack.\n");
+            } else {
+                printf("%s\n%ld  popped from the stack.\n", a[top].name,a[top].num);
+                top--;
+            }
+        } else if (choice == 3) { 
+            if (top == -1) {
+                printf("The stack is empty.\n");
+            } else {
+                printf("The stack elements are:\n");
+                for (int i = top; i >= 0; i--){
+                    printf("%s \n %ld\n",a[i].name,a[i].num);
+                }
+                printf("\n");
+            }
+        } else if (choice == 4){ 
+            printf("Exiting the program.\n");
+            break;
+        } else {
+            printf("Invalid choice! Please select 1, 2, 3, or 4.\n");
+        }
+    }
+    return 0;
+}
