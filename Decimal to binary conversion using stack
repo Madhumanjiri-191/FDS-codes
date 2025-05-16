@@ -1,0 +1,57 @@
+#include<stdio.h>
+int a[5],n=5,top=-1;
+void push(rem)
+{ 
+    top++;
+    a[top]=rem;
+}
+void decimaltobinary(num)
+{
+    int rem, quo;
+
+    while(num/2>=1 && num!=1)
+    {
+    
+    
+        rem=num%2;
+        quo=num/2;
+        push(rem);
+        num=quo;
+        if(num==1)
+        {
+          push(num); 
+        }
+    }
+
+}
+void pop()
+{
+    
+   
+    
+        printf("%d\t", a[top]);
+        top--;
+    
+}
+int main()
+{
+    int num;
+    printf("Enter the decimal number\n");
+    scanf("%d", &num);
+    if(num==0)
+    {
+        printf("Binary form= 0");
+    }
+    
+    else
+    {
+    
+    decimaltobinary(num);
+    }
+    printf("The binary form of the number is:\n");
+    for(int i=top;i>=0;i--)
+    {
+    pop();
+    }
+ return 0;
+}
